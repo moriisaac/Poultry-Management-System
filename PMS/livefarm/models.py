@@ -39,35 +39,35 @@ from django.urls import reverse
 # # from django.db import models
 # # from django.contrib.auth.models import User
 # #
-# # class Farm(models.Model):
-# #     name = models.CharField(max_length=100)
-# #     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-# #     location = models.CharField(max_length=255)
-# #     contact_info = models.CharField(max_length=100)
-# #
-# #     def __str__(self):
-# #         return self.name
-# #
-# # class PoultryHouse(models.Model):
-# #     farm = models.ForeignKey(Farm, on_delete=models.CASCADE)
-# #     capacity = models.PositiveIntegerField()
-# #     temperature = models.FloatField()
-# #     humidity = models.FloatField()
-# #
-# #     def __str__(self):
-# #         return f"{self.farm.name}'s Poultry House"
-# #
-# # class Chicken(models.Model):
-# #     poultry_house = models.ForeignKey(PoultryHouse, on_delete=models.CASCADE)
-# #     breed = models.CharField(max_length=50)
-# #     age = models.PositiveIntegerField()
-# #     health_status = models.CharField(max_length=20)
-# #     weight = models.FloatField()
-# #
-# #     def __str__(self):
-# #         return f"{self.breed} in {self.poultry_house}"
+# class Farm(models.Model):
+#     name = models.CharField(max_length=100)
+#     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+#     location = models.CharField(max_length=255)
+#     contact_info = models.CharField(max_length=100)
 #
+#     def __str__(self):
+#         return self.name
 #
+# class PoultryHouse(models.Model):
+#     farm = models.ForeignKey(Farm, on_delete=models.CASCADE)
+#     capacity = models.PositiveIntegerField()
+#     temperature = models.FloatField()
+#     humidity = models.FloatField()
+#
+#     def __str__(self):
+#         return f"{self.farm.name}'s Poultry House"
+#
+# class Chicken(models.Model):
+#     poultry_house = models.ForeignKey(PoultryHouse, on_delete=models.CASCADE)
+#     breed = models.CharField(max_length=50)
+#     age = models.PositiveIntegerField()
+#     health_status = models.CharField(max_length=20)
+#     weight = models.FloatField()
+#
+#     def __str__(self):
+#         return f"{self.breed} in {self.poultry_house}"
+
+
 # from django.db import models
 # from django.conf import settings
 # from django.urls import reverse
