@@ -32,7 +32,7 @@ MANIFEST
 *.manifest
 *.spec
 livefarm/migrations/
-accounts/migrations/
+authentication/migrations/
 
 # Installer logs
 pip-log.txt
