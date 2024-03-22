@@ -41,7 +41,16 @@ INSTALLED_APPS = [
     'rest_framework',
     'authentication',
     'livefarm',
-    'birds',
+    'Eggs',
+    'Farm',
+    'Feed',
+    'Medicine',
+    'Workers',
+    'Sales',
+    'Expenses',
+    'OthersSupplies'
+
+
 
 ]
 
