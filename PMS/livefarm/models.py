@@ -30,7 +30,7 @@
 #     name = models.CharField(max_length=200)
 #     dosage = models.CharField(max_length=200)
 #     notes = models.TextField()
-
+from django.contrib.auth.models import User
 # Create your models here.
 # from django.db import models
 # from django.contrib.auth.models import User
@@ -229,8 +229,8 @@ class BirdsStock(AuditableModel):
         return f'{self.pen_house} - {self.invoice_no}'
 
     class Meta:
-        verbose_name = 'Birds Stock'
-        verbose_name_plural = 'Birds Stocks'
+        verbose_name = 'birds Stock'
+        verbose_name_plural = 'birds Stocks'
         db_table = 'birds_stock_model'
         permissions = (
             ('birds_manage_birds_stock', 'Can manage bird stock custom'),
