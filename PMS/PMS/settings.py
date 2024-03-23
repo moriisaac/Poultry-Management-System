@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'Workers',
     'Sales',
     'Expenses',
-    'OthersSupplies'
+    'birds',
+    'OtherSupplies'
 
 
 
