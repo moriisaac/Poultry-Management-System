@@ -12,7 +12,7 @@ class Farm(models.Model):
         return self.name
 class PoultryHouse(models.Model):
     farm = models.ForeignKey(Farm, on_delete=models.CASCADE)
-    pen_no = models.CharField(max_length=100)
+    pen_no = models.CharField(max_length=100,unique=True)
 
     mortality_rate = models.FloatField()
     production_rate = models.FloatField()
