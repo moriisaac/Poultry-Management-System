@@ -12,6 +12,10 @@ class Farm(models.Model):
         return self.name
 class PoultryHouse(models.Model):
     farm = models.ForeignKey(Farm, on_delete=models.CASCADE)
+    pen_no = models.CharField(max_length=100)
+
+    mortality_rate = models.FloatField()
+    production_rate = models.FloatField()
     capacity = models.PositiveIntegerField()
     temperature = models.FloatField()
     humidity = models.FloatField()
