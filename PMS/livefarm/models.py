@@ -39,93 +39,93 @@ from django.urls import reverse
 # # from django.db import models
 # # from django.contrib.auth.models import User
 # #
-class Farm(models.Model):
-    name = models.CharField(max_length=100)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    location = models.CharField(max_length=255)
-    contact_info = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
-class EggProduction(models.Model):
-    DATE_CHOICES = (
-        ('daily', 'Daily'),
-        ('weekly', 'Weekly')
-    )
-    frequency = models.CharField(max_length=10, choices=DATE_CHOICES)
-    date_of_production = models.DateField()
-    quantity = models.IntegerField()
-class PoultryHouse(models.Model):
-    farm = models.ForeignKey(Farm, on_delete=models.CASCADE)
-    capacity = models.PositiveIntegerField()
-    temperature = models.FloatField()
-    humidity = models.FloatField()
-
-    def __str__(self):
-        return f"{self.farm.name}'s Poultry House"
-
-class Chicken(models.Model):
-    STAGE_CHOICES = (
-        ('chicks', 'Chicks'),
-        ('layers', 'Layers'),
-        ('broilers', 'Broilers'),
-        ('others', 'Others')
-    )
-    stage = models.CharField(max_length=10, choices=STAGE_CHOICES)
-    poultry_house = models.ForeignKey(PoultryHouse, on_delete=models.CASCADE)
-    breed = models.CharField(max_length=50)
-    age = models.PositiveIntegerField()
-    health_status = models.CharField(max_length=20)
-
-    weight = models.FloatField()
-    quantity = models.IntegerField()
-
-    def __str__(self):
-        return f"{self.quantity} in {self.poultry_house}"
-
-class BrokenEggs(models.Model):
-
-    egg_production = models.ForeignKey(EggProduction, on_delete=models.CASCADE)
-    date = models.DateField()
-    quantity = models.IntegerField()
-
-class Feed(models.Model):
-    poultry_house = models.ForeignKey(PoultryHouse, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
-    type = models.CharField(max_length=100)
-    expiry_date = models.DateField()
-    administration_method = models.CharField(max_length=100)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    supplier_name = models.CharField(max_length=100)
-
-class Medicine(models.Model):
-    name = models.CharField(max_length=100)
-    stage = models.CharField(max_length=100)
-    expiry_date = models.DateField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    supplier_name = models.CharField(max_length=100)
-
-class OtherSupplies(models.Model):
-    poultry_house = models.ForeignKey(PoultryHouse, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
-    category = models.CharField(max_length=100)
-    expiry_date = models.DateField(null=True, blank=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    supplier_name = models.CharField(max_length=100)
-
-class Purchase(models.Model):
-    buyer_name = models.CharField(max_length=100)
-    buyer_contact = models.CharField(max_length=100)
-    buyer_address = models.TextField()
-    frequency_choices = (
-        ('daily', 'Daily'),
-        ('weekly', 'Weekly'),
-        ('monthly', 'Monthly'),
-        ('yearly', 'Yearly')
-    )
-    frequency = models.CharField(max_length=10, choices=frequency_choices)
-    quantity = models.IntegerField()
-    bird = models.ForeignKey(Chicken, on_delete=models.CASCADE)
+# class Farm(models.Model):
+#     name = models.CharField(max_length=100)
+#     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+#     location = models.CharField(max_length=255)
+#     contact_info = models.CharField(max_length=100)
+#
+#     def __str__(self):
+#         return self.name
+# class EggProduction(models.Model):
+#     DATE_CHOICES = (
+#         ('daily', 'Daily'),
+#         ('weekly', 'Weekly')
+#     )
+#     frequency = models.CharField(max_length=10, choices=DATE_CHOICES)
+#     date_of_production = models.DateField()
+#     quantity = models.IntegerField()
+# class PoultryHouse(models.Model):
+#     farm = models.ForeignKey(Farm, on_delete=models.CASCADE)
+#     capacity = models.PositiveIntegerField()
+#     temperature = models.FloatField()
+#     humidity = models.FloatField()
+#
+#     def __str__(self):
+#         return f"{self.farm.name}'s Poultry House"
+#
+# class Chicken(models.Model):
+#     STAGE_CHOICES = (
+#         ('chicks', 'Chicks'),
+#         ('layers', 'Layers'),
+#         ('broilers', 'Broilers'),
+#         ('others', 'Others')
+#     )
+#     stage = models.CharField(max_length=10, choices=STAGE_CHOICES)
+#     poultry_house = models.ForeignKey(PoultryHouse, on_delete=models.CASCADE)
+#     breed = models.CharField(max_length=50)
+#     age = models.PositiveIntegerField()
+#     health_status = models.CharField(max_length=20)
+#
+#     weight = models.FloatField()
+#     quantity = models.IntegerField()
+#
+#     def __str__(self):
+#         return f"{self.quantity} in {self.poultry_house}"
+#
+# class BrokenEggs(models.Model):
+#
+#     egg_production = models.ForeignKey(EggProduction, on_delete=models.CASCADE)
+#     date = models.DateField()
+#     quantity = models.IntegerField()
+#
+# class Feed(models.Model):
+#     poultry_house = models.ForeignKey(PoultryHouse, on_delete=models.CASCADE)
+#     name = models.CharField(max_length=100)
+#     type = models.CharField(max_length=100)
+#     expiry_date = models.DateField()
+#     administration_method = models.CharField(max_length=100)
+#     price = models.DecimalField(max_digits=10, decimal_places=2)
+#     supplier_name = models.CharField(max_length=100)
+#
+# class Medicine(models.Model):
+#     name = models.CharField(max_length=100)
+#     stage = models.CharField(max_length=100)
+#     expiry_date = models.DateField()
+#     price = models.DecimalField(max_digits=10, decimal_places=2)
+#     supplier_name = models.CharField(max_length=100)
+#
+# class OtherSupplies(models.Model):
+#     poultry_house = models.ForeignKey(PoultryHouse, on_delete=models.CASCADE)
+#     name = models.CharField(max_length=100)
+#     category = models.CharField(max_length=100)
+#     expiry_date = models.DateField(null=True, blank=True)
+#     price = models.DecimalField(max_digits=10, decimal_places=2)
+#     supplier_name = models.CharField(max_length=100)
+#
+# class Purchase(models.Model):
+#     buyer_name = models.CharField(max_length=100)
+#     buyer_contact = models.CharField(max_length=100)
+#     buyer_address = models.TextField()
+#     frequency_choices = (
+#         ('daily', 'Daily'),
+#         ('weekly', 'Weekly'),
+#         ('monthly', 'Monthly'),
+#         ('yearly', 'Yearly')
+#     )
+#     frequency = models.CharField(max_length=10, choices=frequency_choices)
+#     quantity = models.IntegerField()
+#     bird = models.ForeignKey(Chicken, on_delete=models.CASCADE)
 # from django.db import models
 # from django.conf import settings
 # from django.urls import reverse
