@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <!-- Meta tags and links -->
+</head>
+
+<body class="g-sidenav-show bg-gray-100 virtual-reality">
+
+  <!-- Navigation -->
+  {% include "includes/navigation.html" %}
+
+  <!-- Main Content -->
+  <div class="border-radius-xl mt-3 mx-3 position-relative" style="background-image: url('{% static 'img/vr-bg.jpg' %}') ; background-size: cover;">
+
+    <!-- Sidebar -->
+    {% include "includes/sidebar.html" %}
+
+    <!-- Main Content Area -->
+    <main class="main-content mt-1 border-radius-lg">
+
+      <!-- Egg List Section -->
+      <div class="section min-vh-85 position-relative transform-scale-0 transform-scale-md-7">
+        <div class="container">
+          <div class="row pt-10">
+            <div class="col-lg-12">
+              <h2 class="display-4 mb-4">Egg Production Records</h2>
+              <table class="table">
+                <!-- Table headers -->
+                <thead>
+                  <tr>
+                    <th>Date of Production</th>
+                    <th>Quantity</th>
+                    <th>Retail Price</th>
+                    <th>Wholesale Price</th>
+                  </tr>
+                </thead>
+                <!-- Table body - Display egg records -->
+                <tbody>
+                  {% for egg in eggs %}
+                  <tr>
+                    <td>{{ egg.date_of_production }}</td>
+                    <td>{{ egg.quantity }}</td>
+                    <td>{{ egg.retail_price }}</td>
+                    <td>{{ egg.wholesale_price }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- Add Egg Form -->
+          <div class="row mt-5">
+            <div class="col-lg-6">
+              <h2 class="display-5 mb-4">Add Egg Production</h2>
+              <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="date_of_production" class="form-label">Date of Production</label>
+                  <input type="date" class="form-control" id="date_of_production" name="date_of_production">
+                </div>
+                <div class="mb-3">
+                  <label for="quantity" class="form-label">Quantity</label>
+                  <input type="number" class="form-control" id="quantity" name="quantity">
+                </div>
+                <div class="mb-3">
+                  <label for="retail_price" class="form-label">Retail Price</label>
+                  <input type="number" class="form-control" id="retail_price" name="retail_price">
+                </div>
+                <div class="mb-3">
+                  <label for="wholesale_price" class="form-label">Wholesale Price</label>
+                  <input type="number" class="form-control" id="wholesale_price" name="wholesale_price">
+                </div>
+                <button type="submit" class="btn btn-primary">Add Egg</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- Footer -->
+  {% include "includes/footer.html" %}
+
+  <!-- APP Configurator -->
+  {% include "includes/fixed-plugin.html" %}
+
+  <!-- Core JS Files -->
+  {% include "includes/scripts.html" %}
+
+</body>
+</html>
