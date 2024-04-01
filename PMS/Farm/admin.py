@@ -11,8 +11,8 @@ class FarmAdmin(admin.ModelAdmin):
 
 @admin.register(PoultryHouse)
 class PoultryHouseAdmin(admin.ModelAdmin):
-    list_display = ('id','farm','pen_no','mortality_rate','production_rate','capacity','temperature','humidity')
-    list_display_links = ('farm','pen_no','mortality_rate','production_rate','capacity')
+    list_display = ('id','farm','pen_number','mortality_rate','production_rate','capacity','temperature','humidity')
+    list_display_links = ('farm','pen_number','mortality_rate','production_rate','capacity')
     list_filter = ('capacity','farm')
     search_fields = ('id','capacity','farm','production_rate')
     list_per_page = 10

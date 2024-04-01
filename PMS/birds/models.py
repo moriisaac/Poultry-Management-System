@@ -26,7 +26,7 @@ class PenHouse(models.Model):
 
 class BaseModel(models.Model):
     date_created = models.DateField(auto_now_add=True)
-    pen_house = models.ForeignKey(PenHouse, to_field='pen_number', on_delete=models.RESTRICT)
+    pen_house = models.ForeignKey('Farm.PoultryHouse', to_field='pen_number', on_delete=models.RESTRICT)
     auth_user = models.ForeignKey(User, on_delete=models.RESTRICT)
 
     def __str__(self):
@@ -52,22 +52,22 @@ class BirdsStock(BaseModel):
         )
 
 
-class MedicineFeed(BaseModel):
-    category_choices = (
-        ('Medicine', 'Medicine'),
-        ('Feed', 'Feed')
-    )
-    category = models.CharField(max_length=30, choices=category_choices)
-    quantity = models.CharField(max_length=10)
-    description = models.TextField(null=True, blank=True)
-
-    class Meta:
-        verbose_name = 'Medicine/Feed'
-        verbose_name_plural = 'Medicine/Feed'
-        db_table = 'medicine_feed_model'
-        permissions = (
-            ('birds_manage_medicine_feed', 'Can manage medicine/feeds custom'),
-        )
+# class MedicineFeed(BaseModel):
+#     category_choices = (
+#         ('Medicine', 'Medicine'),
+#         ('Feed', 'Feed')
+#     )
+#     category = models.CharField(max_length=30, choices=category_choices)
+#     quantity = models.CharField(max_length=10)
+#     description = models.TextField(null=True, blank=True)
+#
+#     class Meta:
+#         verbose_name = 'Medicine/Feed'
+#         verbose_name_plural = 'Medicine/Feed'
+#         db_table = 'medicine_feed_model'
+#         permissions = (
+#             ('birds_manage_medicine_feed', 'Can manage medicine/feeds custom'),
+#         )
 
 
 class MortalityCull(BaseModel):

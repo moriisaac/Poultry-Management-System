@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import (
-    PenHouse, BirdsStock, MedicineFeed, MortalityCull
+    PenHouse, BirdsStock,  MortalityCull
 )
 
 
@@ -22,14 +22,14 @@ class BirdsStockAdmin(admin.ModelAdmin):
     search_fields = ('id', 'pen_house', 'invoice_no')
     list_per_page = 25
 
-
-@admin.register(MedicineFeed)
-class MedicineFeedAdmin(admin.ModelAdmin):
-    list_display = ('id', 'pen_house', 'date_created', 'category')
-    list_display_links = ('id', 'pen_house')
-    list_filter = ('date_created', 'category')
-    search_fields = ('id', 'pen_house')
-    list_per_page = 25
+#
+# @admin.register(MedicineFeed)
+# class MedicineFeedAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'pen_house', 'date_created', 'category')
+#     list_display_links = ('id', 'pen_house')
+#     list_filter = ('date_created', 'category')
+#     search_fields = ('id', 'pen_house')
+#     list_per_page = 25
 
 
 @admin.register(MortalityCull)
