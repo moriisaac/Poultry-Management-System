@@ -1,9 +1,13 @@
 from django.contrib import admin
-from .models import Worker
+from django.contrib.auth.admin import UserAdmin
 
-class WorkerAdmin(admin.ModelAdmin):
-    list_display = ('name', 'contact_information', 'role', 'hourly_rate', 'date_employed', 'monthly_salary')
-    search_fields = ('name', 'contact_information', 'role')
-    list_per_page = 25
+from .models import  CustomUser
 
-admin.site.register(Worker, WorkerAdmin)
+
+
+class CustomUserAdmin(UserAdmin):
+    model = CustomUser
+    # Define custom fields to display in the admin interface
+    list_display = ['username', 'email', 'role', 'is_staff','date_employed', 'monthly_salary']
+
+admin.site.register(CustomUser, CustomUserAdmin)
