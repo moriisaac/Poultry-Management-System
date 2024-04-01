@@ -3,7 +3,7 @@
 from django.contrib.auth.models import AbstractUser, Permission, Group
 from django.db import models
 
-class CustomUser(AbstractUser):
+class Staff(AbstractUser):
     ROLES = (
         ('worker', 'Worker'),
         ('manager', 'Manager'),
@@ -29,7 +29,7 @@ class CustomUser(AbstractUser):
 
 
 class Worker(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    user = models.OneToOneField(Staff, on_delete=models.CASCADE)
     date_employed = models.DateField()
     salary = models.DecimalField(max_digits=10, decimal_places=2)
 
