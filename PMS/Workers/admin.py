@@ -12,5 +12,5 @@ class WorkerInline(admin.StackedInline):
 class CustomUserAdmin(UserAdmin):
     inlines = (WorkerInline,)
 
-admin.site.unregister(CustomUser)
+
 admin.site.register(CustomUser, CustomUserAdmin)

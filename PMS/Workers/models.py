@@ -11,6 +11,11 @@ class CustomUser(AbstractUser):
     role = models.CharField(max_length=20, choices=ROLES)
     is_staff = models.BooleanField(default=False)
 
+class Meta:
+
+        permissions_related_name = "custom_user_permissions"
+        groups_related_name = "custom_user_groups"
+
 class Worker(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     date_employed = models.DateField()
