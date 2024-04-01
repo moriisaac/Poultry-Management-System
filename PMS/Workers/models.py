@@ -11,10 +11,10 @@ class CustomUser(AbstractUser):
     role = models.CharField(max_length=20, choices=ROLES)
     is_staff = models.BooleanField(default=False)
 
-    class Meta(AbstractUser.Meta):
-        swappable = 'AUTH_USER_MODEL'
-        permissions_related_name = 'custom_user_permissions'
-        groups_related_name = 'custom_user_groups'
+    # class Meta(AbstractUser.Meta):
+    #     swappable = 'AUTH_USER_MODEL'
+    #     permissions_related_name = 'custom_user_permissions'
+    #     groups_related_name = 'custom_user_groups'
 
 
 
