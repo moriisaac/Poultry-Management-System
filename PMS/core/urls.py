@@ -16,15 +16,45 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.contrib.auth import views as auth_views
 
 from django.urls import path, include
 
 urlpatterns = [
     path('', include('admin_soft.urls')),
     path('admin/', admin.site.urls),
+    path('app/v1/eggs/',include('Eggs.urls')),
     # path('api/v1/auth/', include('authentication.urls')),
     # path('api//v1/livefarm/', include('livefarm.urls')),
     # path('api/v1/birds/', include('birds.urls')),
+path(
+    "admin/password_reset/",
+    auth_views.PasswordResetView.as_view(
+        extra_context={"site_header": admin.site.site_header}
+    ),
+    name="admin_password_reset",
+),
+path(
+    "admin/password_reset/done/",
+    auth_views.PasswordResetDoneView.as_view(
+        extra_context={"site_header": admin.site.site_header}
+    ),
+    name="password_reset_done",
+),
+path(
+    "reset/<uidb64>/<token>/",
+    auth_views.PasswordResetConfirmView.as_view(
+        extra_context={"site_header": admin.site.site_header}
+    ),
+    name="password_reset_confirm",
+),
+path(
+    "reset/done/",
+    auth_views.PasswordResetCompleteView.as_view(
+        extra_context={"site_header": admin.site.site_header}
+    ),
+    name="password_reset_complete",
+),
 
 
 

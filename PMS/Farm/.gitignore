@@ -33,7 +33,7 @@ MANIFEST
 *.spec
 livefarm/migrations/
 authentication/migrations/
-
+migrations/
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt

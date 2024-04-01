@@ -19,9 +19,41 @@
                 <li class="nav-item">
                   <span class="nav-link{% if app_label != app.label and app.url not in request.path|urlencode  %} collapsed{% endif %} d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenu-{{ app.app_label }}">
                     <span class="d-flex justify-content-between align-items-center">
+
                       <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <span class="sidebar-icon {{ app.icon }}"></span>
-                      </div>
+                    {% if app.label == 'Eggs' %}
+                        <!-- Icon for Eggs app -->
+                        <i class="fas fa-egg"></i>
+                    {% elif app.label == 'Workers' %}
+                        <!-- Icon for Workers app -->
+                        <i class="fas fa-users"></i>
+                    {% elif app.label == 'Birds' %}
+                        <!-- Icon for Birds app -->
+                        <i class="fas fa-crow"></i>
+                    {% elif app.label == 'Expenses' %}
+                        <!-- Icon for Expenses app -->
+                        <i class="fas fa-money-bill-wave"></i>
+                    {% elif app.label == 'Livefarm' %}
+                        <!-- Icon for Farm app -->
+                        <i class="fas fa-tractor"></i>
+                    {% elif app.label == 'Feed' %}
+                        <!-- Icon for Feed app -->
+                        <i class="fas fa-carrot"></i>
+                    {% elif app.label == 'Medicine' %}
+                        <!-- Icon for Medicine app -->
+                        <i class="fas fa-medkit"></i>
+                    {% elif app.label == 'Other Supplies' %}
+                        <!-- Icon for Other Supplies app -->
+                        <i class="fas fa-shopping-basket"></i>
+                    {% elif app.label == 'Sales' %}
+                        <!-- Icon for Sales app -->
+                        <i class="fas fa-chart-line"></i>
+                    {% else %}
+                        <!-- Default icon for other apps -->
+                        <i class="fas fa-cube"></i>
+                    {% endif %}
+                     </div>
+
                       <a href="{{ app.url }}">
                         <span class="nav-link-text ms-1">{{ app.label|slice:10 }}{% if app.label|length > 10 %}..{% endif %}</span>
                       </a>
@@ -29,22 +61,23 @@
                   </span>
 
                   {% if app.models %}
-                    <div class="multi-level ms-5 collapse {% if 'tables-bootstrap-' in segment or app_label == app.label or app.url in request.path|urlencode %} show {% endif %}" role="list" id="submenu-{{ app.app_label }}"                                                                                                       aria-expanded="{% if app_label == app.label or app.url in request.path|urlencode %}true{% else %}false{% endif %}">
-                      <ul class="flex-column nav">
-                        {% for model in app.models %}
-                          {% if model.url %}
-                            <li class="nav-item{% if 'bootstrap-tables' in segment or model.url in request.path|urlencode %} active {% endif %} list-unstyled">
-                              <a class="nav-link" href="{{ model.url }}">
-                                <span class="nav-link-text ms-1">{{ model.label }}</span>
-                              </a>
-                            </li>
-                          {% else %}
-                            <li class="nav-item list-unstyled">{{ model.label }}</li>
-                          {% endif %}
-                        {% endfor %}
-                      </ul>
-                    </div>
-                  {% endif %}
+<div class="multi-level ms-5 collapse {% if 'tables-bootstrap-' in segment or app_label == app.label or app.url in request.path|urlencode %} show {% endif %}" role="list" id="submenu-{{ app.app_label }}" aria-expanded="{% if app_label == app.label or app.url in request.path|urlencode %}true{% else %}false{% endif %}">
+  <ul class="flex-column nav">
+    {% for model in app.models %}
+    {% if model.url %}
+    <li class="nav-item{% if 'bootstrap-tables' in segment or model.url in request.path|urlencode %} active {% endif %} list-unstyled">
+      <a class="nav-link" href="{{ model.url }}">
+        <span class="nav-link-text ms-1"><i class="fas fa-file"></i> {{ model.label }}</span>
+      </a>
+    </li>
+    {% else %}
+    <li class="nav-item list-unstyled"><i class="fas fa-folder"></i> {{ model.label }}</li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
                 </li>
               {% endif %}
           {% endfor %}
