@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'Feed',
     'Medicine',
     'Manure',
+    'Audits',
     'Workers',
     'Sales',
     'Expenses',
