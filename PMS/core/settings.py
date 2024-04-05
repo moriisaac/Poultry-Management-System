@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'Farm',
     'Feed',
     'Medicine',
+    'Manure',
     'Workers',
     'Sales',
     'Expenses',
