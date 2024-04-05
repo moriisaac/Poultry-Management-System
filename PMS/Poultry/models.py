@@ -26,3 +26,11 @@ class Poultry(models.Model):
     def __str__(self):
         return f"{self.get_type_display()} - {self.total_quantity} ({self.poultry_house})"
 
+
+class PoultryDeath(models.Model):
+    poultry = models.ForeignKey(Poultry, on_delete=models.CASCADE, related_name='deaths')
+    date = models.DateField()
+    cause = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.poultry} - {self.date} - {self.cause}"
